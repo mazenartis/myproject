@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Demo - Ard AlSamar</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle" onchange="toggleTheme()">
+            <span class="slider"></span>
+        </label>
+        <span class="theme-toggle-label" data-translate-key="theme-toggle">تبديل الوضع</span>
+    </div>
+
+    <!-- Demo Content -->
+    <div style="padding: 50px; max-width: 800px; margin: 0 auto;">
+        <h1 data-translate-key="home-title">ارض السمر</h1>
+        <p data-translate-key="home-desc">اكتشف جمال السودان وتاريخه العريق مع أفضل الوجهات السياحية والعروض المميزة.</p>
+        
+        <div class="card" style="padding: 20px; margin: 20px 0;">
+            <h3 data-translate-key="feature-hotels-title">حجوزات الفنادق</h3>
+            <p data-translate-key="feature-hotels-desc">احجز أفضل الفنادق بسهولة واستمتع بإقامة مريحة في جميع أنحاء السودان.</p>
+            <button class="btn" data-translate-key="home-book-btn">احجز الآن</button>
+        </div>
+
+        <div class="card" style="padding: 20px; margin: 20px 0;">
+            <h3 data-translate-key="feature-tours-title">جولات سياحية</h3>
+            <p data-translate-key="feature-tours-desc">استمتع بجولات سياحية منظمة إلى أجمل المناطق الطبيعية والتاريخية.</p>
+            <button class="btn" data-translate-key="home-more-btn">اعرف المزيد</button>
+        </div>
+
+        <form style="margin: 20px 0;">
+            <div style="margin-bottom: 15px;">
+                <label data-translate-key="label-name">الاسم الكامل</label>
+                <input type="text" style="width: 100%; padding: 10px; margin-top: 5px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label data-translate-key="label-email">البريد الإلكتروني</label>
+                <input type="email" style="width: 100%; padding: 10px; margin-top: 5px;">
+            </div>
+            <button type="submit" class="btn" data-translate-key="booking-btn">إرسال الحجز</button>
+        </form>
+    </div>
+
+    <script src="lang.js"></script>
+    <script>
+        // Demo initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            setLang('ar');
+        });
+    </script>
+</body>
+</html>

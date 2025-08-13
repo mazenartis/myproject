@@ -1,0 +1,108 @@
+<?php
+session_start();
+include 'connect.php';
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title id="page-title">ارض السمر</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="lang.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 10px;
+      margin: 10px auto;
+      border-radius: 8px;
+      max-width: 600px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<?php
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='success-message'>" . $_SESSION['success_message'] . "</div>";
+    unset($_SESSION['success_message']);
+}
+?>
+
+ <header>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="home.php" id="nav-home">الرئيسية</a></li>
+        <li><a href="services.php" id="nav-services">خدمات</a></li>
+        <li><a href="help.php" id="nav-help">مساعدة</a></li>
+        <li><a href="blog.php" id="nav-blog">مدونة</a></li>
+        <li><a href="about.php" id="nav-about">من نحن</a></li>
+      </ul>
+      <div class="lang-switch">
+        <a href="#" onclick="setLang('ar'); return false;" id="ar-btn">العربية</a>
+        <span> | </span>
+        <a href="#" onclick="setLang('en'); return false;" id="en-btn">ENG</a>
+      </div>
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <span style="color:white; margin-left:15px;" id="welcome-msg">مرحباً،</span> <span style="color:white; margin-left:5px;" id="user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? $_SESSION['user']); ?></span>
+        <a href="logout.php" class="logout-btn" id="logout-btn">تسجيل الخروج</a>
+      <?php else: ?>
+        <a href="login.php" class="login-btn" id="nav-login">تسجيل دخول</a>
+        <a href="register.php" class="register-btn" id="nav-register">تسجيل</a>
+      <?php endif; ?>
+
+      <div class="contanier">
+            <label class="theme-switch" >
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+                </label>
+                </div>
+    </nav>
+    
+  </header>
+
+<section class="hero">
+  <img src="images/Image.png" alt="ارض السمر">
+  <h1 id="home-title">ارض السمر</h1>
+
+  
+
+  <p id="home-desc">اكتشف جمال السودان وتاريخه العريق مع أفضل الوجهات السياحية والعروض المميزة.</p>
+  <a href="booking.php" class="btn" id="home-book-btn">احجز الآن</a>
+  <a href="gallery.php" class="btn secondary" id="home-more-btn">اعرف المزيد</a>
+  <a href="my_bookings.php" class="btn" id="home-my-bookings-btn" style="margin-top:1rem;background:#4d3d25;">حجوزاتي</a>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="فنادق">
+    <h3 id="feature-hotels-title">حجوزات الفنادق</h3>
+    <p id="feature-hotels-desc">احجز أفضل الفنادق بسهولة واستمتع بإقامة مريحة في جميع أنحاء السودان.</p>
+  </div>
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="جولات">
+    <h3 id="feature-tours-title">جولات سياحية</h3>
+    <p id="feature-tours-desc">استمتع بجولات سياحية منظمة إلى أجمل المناطق الطبيعية والتاريخية.</p>
+  </div>
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="نصائح السفر">
+    <h3 id="feature-tips-title">نصائح السفر</h3>
+    <p id="feature-tips-desc">احصل على نصائح وإرشادات لجعل رحلتك أكثر سهولة وأماناً.</p>
+  </div>
+</section>
+
+<footer>
+  <span id="footer-text">جميع الحقوق محفوظة © 2025 ارض السمر</span>
+</footer>
+
+</body>
+</html>
